@@ -41,7 +41,7 @@ mysql -e "CREATE DATABASE glpi_db"
 # Create a new user
 mysql -e "CREATE USER 'glpi'@'localhost' IDENTIFIED BY '$SQLGLPIPWD'"
 # Grant privileges to the new user for the new database
-mysql -e "GRANT ALL PRIVILEGES ON glpi_db* TO 'glpi'@'localhost'"
+mysql -e "GRANT ALL PRIVILEGES ON glpi_db.* TO 'glpi'@'localhost'"
 # Reload privileges
 mysql -e "FLUSH PRIVILEGES"
 
