@@ -1,5 +1,5 @@
-!/bin/bash
-
+#!/bin/bash
+mvzVT453
 GLPI_VERSION="10.0.16"
 DOMAIN_IP=""
 SLQROOTPWD="pmvzVT453"
@@ -41,7 +41,7 @@ mysql -e "CREATE DATABASE glpi"
 # Create a new user
 mysql -e "CREATE USER 'glpi_user'@'localhost' IDENTIFIED BY '$SQLGLPIPWD'"
 # Grant privileges to the new user for the new database
-mysql -e "GRANT ALL PRIVILEGES ON glpi.* TO 'glpi'@'localhost'"
+mysql -e "GRANT ALL PRIVILEGES ON glpi_db* TO 'glpi'@'localhost'"
 # Reload privileges
 mysql -e "FLUSH PRIVILEGES"
 
