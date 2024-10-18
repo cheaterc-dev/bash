@@ -52,7 +52,7 @@ dpkg-reconfigure tzdata
 systemctl restart mariadb
 
 sleep 1
-mysql -e "GRANT SELECT ON mysql.time_zone_name TO 'glpi_user'@'localhost'"
+mysql -e "GRANT SELECT ON mysql.time_zone_name TO 'glpi'@'localhost'"
 
 
 # Download and prepare GLPI files
