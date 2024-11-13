@@ -15,6 +15,7 @@ DB_NAME="wordpress"
 DB_USER="wordpres"
 PASS="wordpres"
 RDS_ENDPOINT="terraform-20241108135040719500000004.cfkumqm66tqo.eu-central-1.rds.amazonaws.com"
+REDIS_ENDPOINT="lamp.z9z366.clustercfg.euc1.cache.amazonaws.com"
 
 export MYSQL_HOST=$ENDPOINT
 
@@ -67,3 +68,7 @@ a2dissite 000-default.conf
 a2ensite wordpress.conf
 a2enmod rewrite
 systemctl restart apache2
+
+redis-cli -h $REDIS_ENDPOINT -p 6379
+
+
