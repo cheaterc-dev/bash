@@ -67,7 +67,7 @@ systemctl restart apache2
 
 wp plugin install redis-cache --activate
 wp redis enable
-redis-cli -h $REDIS_ENDPOINT -p 6379
+
 
 cat <<EOL >> /var/www/html/wordpress/wp-config.php
 
