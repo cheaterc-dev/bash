@@ -6,6 +6,9 @@ apt install -y apache
 apt install -y mysql-server
 apt install -y php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip 
 
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
 
 DB_NAME="wordpress"
 DB_USER="wordpres"
@@ -39,6 +42,10 @@ sed -i "s/define( 'DB_PASSWORD', 'password_here' );/define( 'DB_PASSWORD', '$PAS
 
 # Замена хоста базы данных
 sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$ENDPOINT' );/" wp-config.php
+
+
+wp plugin install redis-cache --activate
+wp redis enable
 
 
 cp -r /home/ubuntu/wordpress /var/www/html/
