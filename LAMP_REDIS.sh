@@ -16,7 +16,7 @@ DB_USER="wordpres"
 PASS="wordpres"
 RDS_ENDPOINT="terraform-20241108135040719500000004.cfkumqm66tqo.eu-central-1.rds.amazonaws.com"
 REDIS_ENDPOINT="lamp.z9z366.clustercfg.euc1.cache.amazonaws.com"
-WP_PATH="/var/www/html/wordpress"
+
 export MYSQL_HOST=$ENDPOINT
 
 
@@ -65,8 +65,8 @@ a2ensite wordpress.conf
 a2enmod rewrite
 systemctl restart apache2
 
-sudo -u www-data -i -- wp plugin install redis-cache --activate --path=$WP_PATH
-sudo -u www-data -i -- wp redis enable --path=$WP_PATH
+sudo -u www-data wp plugin install redis-cache --activate --path=/var/www/html/wordpress
+sudo -u www-data wp redis enable --path=/var/www/html/wordpress
 
 
 cat <<EOL >> /var/www/html/wordpress/wp-config.php
