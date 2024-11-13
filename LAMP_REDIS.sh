@@ -40,10 +40,6 @@ sed -i "s/define( 'DB_PASSWORD', 'password_here' );/define( 'DB_PASSWORD', '$PAS
 sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$RDS_ENDPOINT' );/" wp-config.php
 
 
-wp plugin install redis-cache --activate
-wp redis enable
-
-
 cp -r /home/ubuntu/wordpress /var/www/html/
 chown -R www-data:www-data /var/www/html/wordpress
 
@@ -69,6 +65,16 @@ a2ensite wordpress.conf
 a2enmod rewrite
 systemctl restart apache2
 
+wp plugin install redis-cache --activate
+wp redis enable
 redis-cli -h $REDIS_ENDPOINT -p 6379
+
+ cat <<EOL >> /var/www/html/wordpress/wp-config.php
+
+// Redis
+define( 'WP_REDIS_HOST', '$REDIS_ENDPOINT' );
+define( 'WP_REDIS_PORT', 6379 );
+define( 'WP_REDIS_DATABASE', 0 );
+EOL
 
 
