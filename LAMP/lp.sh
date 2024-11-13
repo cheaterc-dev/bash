@@ -47,9 +47,6 @@ chown -R www-data:www-data /var/www/html/wordpress
 touch nano /etc/apache2/sites-available/wordpress.conf
 
 cat <<EOL > /etc/apache2/sites-available/wordpress.conf
-
-cat <<EOL > /etc/apache2/sites-available/wordpress.conf
-
 <VirtualHost *:80>
 ServerAdmin webmaster@localhost
 ServerName 35.159.17.174
