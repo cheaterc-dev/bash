@@ -65,8 +65,8 @@ a2ensite wordpress.conf
 a2enmod rewrite
 systemctl restart apache2
 
-wp plugin install redis-cache --activate
-wp redis enable
+sudo -u www-data -i -- wp plugin install redis-cache --activate --path=$WP_PATH
+sudo -u www-data -i -- wp redis enable --path=$WP_PATH
 
 
 cat <<EOL >> /var/www/html/wordpress/wp-config.php
