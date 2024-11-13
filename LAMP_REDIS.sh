@@ -16,7 +16,7 @@ DB_USER="wordpres"
 PASS="wordpres"
 RDS_ENDPOINT="terraform-20241108135040719500000004.cfkumqm66tqo.eu-central-1.rds.amazonaws.com"
 REDIS_ENDPOINT="lamp.z9z366.clustercfg.euc1.cache.amazonaws.com"
-
+WP_PATH="/var/www/html/wordpress"
 export MYSQL_HOST=$ENDPOINT
 
 
