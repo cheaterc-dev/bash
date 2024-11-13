@@ -5,6 +5,7 @@ apt upgrade -y
 apt install -y apache
 apt install -y mysql-server
 apt install -y php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-xmlrpc php-soap php-intl php-zip 
+apt-get install -y redis-tools
 
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
@@ -13,7 +14,7 @@ sudo mv wp-cli.phar /usr/local/bin/wp
 DB_NAME="wordpress"
 DB_USER="wordpres"
 PASS="wordpres"
-ENDPOINT="terraform-20241108135040719500000004.cfkumqm66tqo.eu-central-1.rds.amazonaws.com"
+RDS_ENDPOINT="terraform-20241108135040719500000004.cfkumqm66tqo.eu-central-1.rds.amazonaws.com"
 
 export MYSQL_HOST=$ENDPOINT
 
@@ -33,15 +34,9 @@ cp wp-config-sample.php wp-config.php
 
 
 sed -i "s/define( 'DB_NAME', 'database_name_here' );/define( 'DB_NAME', '$DB_NAME' );/" wp-config.php
-
-# Замена имени пользователя
 sed -i "s/define( 'DB_USER', 'username_here' );/define( 'DB_USER', '$DB_USER' );/" wp-config.php
-
-# Замена пароля
 sed -i "s/define( 'DB_PASSWORD', 'password_here' );/define( 'DB_PASSWORD', '$PASS' );/" wp-config.php
-
-# Замена хоста базы данных
-sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$ENDPOINT' );/" wp-config.php
+sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$RDS_ENDPOINT' );/" wp-config.php
 
 
 wp plugin install redis-cache --activate
