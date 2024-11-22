@@ -10,7 +10,7 @@ apt install -y php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php
 DB_NAME="wordpress"
 DB_USER="wordpres"
 PASS="wordpres"
-ENDPOINT="terraform-20241108135040719500000004.cfkumqm66tqo.eu-central-1.rds.amazonaws.com"
+ENDPOINT=""
 
 export MYSQL_HOST=$ENDPOINT
 
