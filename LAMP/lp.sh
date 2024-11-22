@@ -15,7 +15,6 @@ ENDPOINT=""
 export MYSQL_HOST=$ENDPOINT
 
 
-
 mysql -u "$DB_USER" -p"$PASS" -h "$MYSQL_HOST" -e "CREATE USER '$DB_USER'@'%' IDENTIFIED BY '$PASS';"
 mysql -u "$DB_USER" -p"$PASS" -h "$MYSQL_HOST" -e "GRANT ALL PRIVILEGES ON wordpress.* TO '$DB_USER'@'%';"
 mysql -u "$DB_USER" -p"$PASS" -h "$MYSQL_HOST" -e "FLUSH PRIVILEGES;"
@@ -30,14 +29,8 @@ cp wp-config-sample.php wp-config.php
 
 
 sed -i "s/define( 'DB_NAME', 'database_name_here' );/define( 'DB_NAME', '$DB_NAME' );/" wp-config.php
-
-# Замена имени пользователя
 sed -i "s/define( 'DB_USER', 'username_here' );/define( 'DB_USER', '$DB_USER' );/" wp-config.php
-
-# Замена пароля
 sed -i "s/define( 'DB_PASSWORD', 'password_here' );/define( 'DB_PASSWORD', '$PASS' );/" wp-config.php
-
-# Замена хоста базы данных
 sed -i "s/define( 'DB_HOST', 'localhost' );/define( 'DB_HOST', '$ENDPOINT' );/" wp-config.php
 
 
