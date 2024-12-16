@@ -18,7 +18,7 @@ cp wp-config-sample.php wp-config.php
 DB_NAME="wordpress"
 DB_USER="wordpres"
 PASS="wordpres"
-
+RDS_ENDPOINT="terraform-20241108135040719500000004.cfkumqm66tqo.eu-central-1.rds.amazonaws.com"
 
 sed -i "s/define( 'DB_NAME', 'database_name_here' );/define( 'DB_NAME', '$DB_NAME' );/" wp-config.php
 sed -i "s/define( 'DB_USER', 'username_here' );/define( 'DB_USER', '$DB_USER' );/" wp-config.php
