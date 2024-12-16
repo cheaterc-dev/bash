@@ -15,6 +15,9 @@ cd wordpress
 cp wp-config-sample.php wp-config.php
 
 
+DB_NAME="wordpress"
+DB_USER="wordpres"
+PASS="wordpres"
 
 
 sed -i "s/define( 'DB_NAME', 'database_name_here' );/define( 'DB_NAME', '$DB_NAME' );/" wp-config.php
